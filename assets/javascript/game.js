@@ -204,11 +204,11 @@ $(document).ready(function (){
 //Final Score Screen
 function Endgame () {
         $("#question-content").empty();
-        $("#question-content").append("<p>You finished the game!</p>");
-        $("#question-content").append("<p>Here are your results.</p>");
-        $("#question-content").append("<p>Correct Answers: " + correctScore + "</p>");
-        $("#question-content").append("<p> Incorrect Answers: " + wrongScore + "</p>");
-        $("#question-content").append("<p> Click the button below to play again! </p>");
+        $("#question-content").append("<p class='answeroptions'>You finished the game!</p>");
+        $("#question-content").append("<p class='answeroptions'>Here are your results.</p>");
+        $("#question-content").append("<p class='answeroptions'>Correct Answers: " + correctScore + "</p>");
+        $("#question-content").append("<p class='answeroptions'>Incorrect Answers: " + wrongScore + "</p>");
+        $("#question-content").append("<p class='answeroptions'> Click the button below to play again! </p>");
         $("#startGamebutton").show();
         $('#timeRemaining').html(" ");
 }
