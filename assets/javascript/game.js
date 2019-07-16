@@ -1,4 +1,4 @@
-$(document).ready(function (){
+$(document).ready(function () {
     //Questions and list of answers
     var questionsStore = [
         {
@@ -29,14 +29,14 @@ $(document).ready(function (){
             gameQuestion: "When David Wallace is laid of from Dunder Mifflin, what product is he in the middle of creating when Michael Scott comes to visit him?",
             options: ['Suck It', 'Staple Machine Gun', 'Drums and Guns', 'Robes for All Occasions'],
             correctAnswer: 'Suck It',
-            image: '<img src="assets/images/David.gif" alt="Michael and David Wallace shake hands." class="gifs img-fluid">'
+            image: '<img src="assets/images/David.gif" alt="Michael and David Wallace shake hands." class="mg-fluid gifs">'
 
         },
         {
             gameQuestion: 'In season seven, what musical did Andy star in?',
             options: ['Grease', 'Sweeney Todd', 'West Side Story', 'Les Miserables'],
             correctAnswer: 'Sweeney Todd',
-            image: '<img src="assets/images/Sweeney-Todd.gif" alt="Michael did not get casted into Sweeney Todd." class="gifs img-fluid">'
+            image: '<img src="assets/images/Sweeney-Todd.gif" alt="Michael did not get casted into Sweeney Todd." class="Todd img-fluid">'
         },
         {
             gameQuestion: 'In the season finale, who moved to a remote location in Florida?',
@@ -95,9 +95,9 @@ $(document).ready(function (){
     function timeUp() {
         if (questionProg === 6) {
             $("#question-content").empty();
-            $("#question-content").append(questionsStore[questionProg].image);
-            $("#question-content").append("<button class='btn btn-light mx-auto' id='nextQuestionbutton'>See Your Results!</button>");
-            $('#timeRemaining').html("Out of Time!");
+            $('#timeRemaining').html("<p>Out of Time!</p>");
+            $("#corImg").append(questionsStore[questionProg].image);
+            $("#question-content").append("<button class='btn btn-light mx-auto clearfix' id='nextQuestionbutton'>See Your Results!</button>");
             wrongScore++;
             console.log(wrongScore);
             questionProg++;
@@ -107,9 +107,9 @@ $(document).ready(function (){
 
         else {
             $("#question-content").empty();
-            $("#question-content").append(questionsStore[questionProg].image);
-            $("#question-content").append("<button  class='btn btn-light mx-auto' id='nextQuestionbutton'>Next Question</button>");
-            $('#timeRemaining').html("Out of Time!");
+            $('#timeRemaining').html("<p>Out of Time!</p>");
+            $("#corImg").append(questionsStore[questionProg].image);
+            $("#question-content").append("<button  class='btn btn-light mx-auto clearfix' id='nextQuestionbutton'>Next Question</button>");
             wrongScore++;
             console.log(wrongScore);
             questionProg++;
@@ -125,85 +125,84 @@ $(document).ready(function (){
     function correctAnswer() {
 
         if (questionProg === 6) {
-        $("#question-content").empty();
-        $("#question-content").append("<p>That's Right!</p>");
-        $("#question-content").append(questionsStore[questionProg].image);
-        $("#question-content").append("<button class='btn btn-light mx-auto' id='nextQuestionbutton'>See Your Results!</button>");
-
-        correctScore++;
-        console.log(correctScore)
-        questionProg++;
-        console.log(questionProg)
-        $('#timeRemaining').html(" ");
-        }
-
-        else {
             $("#question-content").empty();
             $("#question-content").append("<p>That's Right!</p>");
-            $("#question-content").append(questionsStore[questionProg].image);
-            $("#question-content").append("<button class='btn btn-light mx-auto' id='nextQuestionbutton'>Next Question</button>");
-    
+            $("#corImg").append(questionsStore[questionProg].image);
+            $("#question-content").append("<button class='btn btn-light mx-auto clearfix' id='nextQuestionbutton'>See Your Results!</button>");
             correctScore++;
             console.log(correctScore)
             questionProg++;
             console.log(questionProg)
             $('#timeRemaining').html(" ");
-            }
-
         }
+
+        else {
+            $("#question-content").empty();
+            $("#question-content").append("<p>That's Right!</p>");
+            $("#corImg").append(questionsStore[questionProg].image);
+            $("#question-content").append("<button class='btn btn-light mx-auto clearfix' id='nextQuestionbutton'>Next Question</button>");
+            correctScore++;
+            console.log(correctScore)
+            questionProg++;
+            console.log(questionProg)
+            $('#timeRemaining').html(" ");
+        }
+
+    }
 
 
     // Wrong Screen
     function wrongAnswer() {
         if (questionProg === 6) {
-        $("#question-content").empty();
-        $("#question-content").append("<p>Sorry! That's Incorrect.</p>");
-        $("#question-content").append(questionsStore[questionProg].image);
-        $("#question-content").append("<button class='btn btn-light mx-auto' id='nextQuestionbutton'>See Your Results!</button>");
-        wrongScore++;
-        console.log(wrongScore)
-        questionProg++;
-        console.log(questionProg)
-        $('#timeRemaining').html(" ");
-    }
+            $("#question-content").empty();
+            $("#question-content").append("<p>Sorry! That's Incorrect.</p>");
+            $("#corImg").append(questionsStore[questionProg].image);
+            $("#question-content").append("<button class='btn btn-light mx-auto clearfix' id='nextQuestionbutton'>See Your Results!</button>");
+            wrongScore++;
+            console.log(wrongScore)
+            questionProg++;
+            console.log(questionProg)
+            $('#timeRemaining').html(" ");
+        }
 
-    else {
-        $("#question-content").empty();
-        $("#question-content").append("<p>Sorry! That's Incorrect.</p>");
-        $("#question-content").append(questionsStore[questionProg].image);
-        $("#question-content").append("<button class='btn btn-light mx-auto' id='nextQuestionbutton'>Next Question</button>");
-        wrongScore++;
-        console.log(wrongScore)
-        questionProg++;
-        console.log(questionProg)
-        $('#timeRemaining').html(" ");
+        else {
+            $("#question-content").empty();
+            $("#question-content").append("<p>Sorry! That's Incorrect.</p>");
+            $("#corImg").append(questionsStore[questionProg].image);
+            $("#question-content").append("<button class='btn btn-light mx-auto clearfix' id='nextQuestionbutton'>Next Question</button>");
+            wrongScore++;
+            console.log(wrongScore)
+            questionProg++;
+            console.log(questionProg)
+            $('#timeRemaining').html(" ");
 
+        }
     }
-}
 
     //Countdown of 30 Seconds
     //Switch to Time’s Up! when over
 
     function timer() {
-        if (timerstart === !false) { 
+        if (timerstart === !false) {
             timerleft = timerleft - 1;
             $('#timeRemaining').text("Time Left: " + timerleft + " seconds");
             console.log(timerleft)
             if (timerleft <= 0) {
                 timerstart = !true;
                 clearInterval(this);
-                $("#timeRemaining").html("Time's Up!");
+                $("#timeRemaining").html("<p>Time's Up!</p>");
                 timeUp();
                 return;
+            }
         }
     }
-}
 
 
 
-//Final Score Screen
-function Endgame () {
+    //Final Score Screen
+    function Endgame() {
         $("#question-content").empty();
+        $("#corImg").empty();
         $("#question-content").append("<p class='answeroptions'>You finished the game!</p>");
         $("#question-content").append("<p class='answeroptions'>Here are your results.</p>");
         $("#question-content").append("<p class='answeroptions'>Correct Answers: " + correctScore + "</p>");
@@ -211,13 +210,13 @@ function Endgame () {
         $("#question-content").append("<p class='answeroptions'> Click the button below to play again! </p>");
         $("#startGamebutton").show();
         $('#timeRemaining').html(" ");
-}
-        
+    }
 
 
 
-//Reset Game Function
-function gameReset() {
+
+    //Reset Game Function
+    function gameReset() {
         correctScore = 0;
         wrongScore = 0;
         questionProg = 0;
@@ -226,33 +225,36 @@ function gameReset() {
 
     }
 
-//Start Screen
-//nothing starts until player hits start
+    //Start Screen
+    //nothing starts until player hits start
 
-$("#startGamebutton").on("click", function () {
+    $("#startGamebutton").on("click", function () {
+        $("#question-content").empty()
+        $("#corImg").empty();
         $("#startGamebutton").hide();
         gameReset();
         questionsUp();
     });
 
-//move to next question after correct/incorrect/time up screens
+    //move to next question after correct/incorrect/time up screens
 
-//Check to see if there are questions left
-//If not move change button to see results
-//Move to Final Scores
+    //Check to see if there are questions left
+    //If not move change button to see results
+    //Move to Final Scores
 
-$(document).on('click', '#nextQuestionbutton', function () {
-    if (questionProg < questionsStore.length) { 
-    console.log("clicked!")
-    $("#question-content").empty();
-    console.log(timerstart);
-    questionsUp();
-    }
-    else if (questionProg === questionsStore.length) {
-        Endgame ();
-    }
+    $(document).on('click', '#nextQuestionbutton', function () {
+        if (questionProg < questionsStore.length) {
+            console.log("clicked!")
+            $("#question-content").empty();
+            $("#corImg").empty();
+            console.log(timerstart);
+            questionsUp();
+        }
+        else if (questionProg === questionsStore.length) {
+            Endgame();
+        }
 
-});
+    });
 
 });
 

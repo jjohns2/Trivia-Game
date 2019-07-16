@@ -27,6 +27,12 @@ h1 {
     padding: 20px;
     width: 200px;
     clear: both;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.row {
+    text-align: center;
 }
 
 #answerquestion {
@@ -44,8 +50,11 @@ h1 {
 .gifs {
     text-align: center;
     margin: 20px auto;
+    margin-top: 0px;
+    margin-bottom: 50px;
     max-width: 100%;
     height: auto;
+    clear: both;
 
 }
 
@@ -53,11 +62,17 @@ h1 {
     text-align: center;
     margin: 20px;
     font-size: 24px;
-
 }
 
 .timeedit {
     text-align: center;
     margin: 20px;
+    margin-bottom: 0px;
+}
 
+.Todd {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 40%;
+    height: auto;
 }
